@@ -29,7 +29,7 @@ namespace ecommerce.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Product(string id)
+        public async Task<IActionResult> ProductById(string id)
         {
             var pr = await _db.Products.FindAsync(id);
             if (pr == null) 
