@@ -15,7 +15,7 @@ namespace ecommerce.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostStorage(Storage storage)
+        public async Task<IActionResult> Storage(Storage storage)
         {
             if (storage == null)
             {

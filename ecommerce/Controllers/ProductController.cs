@@ -16,7 +16,7 @@ namespace ecommerce.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetProducts()
+        public async Task<IActionResult> Products()
         {
             var prs = await _db.Products.ToListAsync();
             return Ok(new ProductResponse 
@@ -29,7 +29,7 @@ namespace ecommerce.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetProductById(string id)
+        public async Task<IActionResult> ProductById(string id)
         {
             var pr = await _db.Products.FindAsync(id);
             if (pr == null) 
@@ -50,7 +50,7 @@ namespace ecommerce.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(Product product)
+        public async Task<IActionResult> Product(Product product)
         {
             if (product == null) 
             { 
@@ -60,6 +60,16 @@ namespace ecommerce.Controllers
                     Description = "Invalid product object",
                 }); 
             }
+            var storage = await _db.Storages.FindAsync(product.StorageId);
+            if (storage == null)
+            {
+                return BadRequest(new ProductResponse
+                {
+                    StatusCode = "400",
+                    Description = "Storage not found",
+                });
+            }
+            product.Storage = storage;
             var res = await _db.Products.AddAsync(product);
             await _db.SaveChangesAsync();
             return Ok(new ProductResponse
@@ -72,7 +82,7 @@ namespace ecommerce.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(string id)
+        public async Task<IActionResult> Product(string id)
         {
             var pr = await _db.Products.FindAsync(id);
             if (pr == null)
