@@ -6,30 +6,28 @@ Ecommerce499 is a backend Restful API server.
 ## Features
 
 - Create, read and delete products.
-- Delete storages.
+- Create storages.
 
 
 ## Endpoints
-- [api/Product/GetProducts] - Return all products in the database.
-- [api/Product/GetProductById] - Find a product by id and return the product if it exists.
-- [api/Product/CreateProduct] - Create a product with a given object.
-- [api/Product/DeleteProduct] - Delete a product by id.
-
+- [GET] [api/Product/Products] - Return all products in the database.
+- [GET] [api/Product/ProductById] - Find a product by id and return the product if it exists.
+- [POST] [api/Product/Product] - Create a product with a given object.
+- [DELETE] [api/Product/Product] - Delete a product by id.
+- [POST] [api/Storage/Storage] - Create a storage with a given object.
 
 ## Sample request bodies
-- [api/Product/GetProducts]
+- [GET] [api/Product/Products]
 ```json
 { }
 ```
 
-- [api/Product/GetProductById]
+- [GET] [api/Product/ProductById?id=wtnkjdnfj-sdfk32432-gfdg454]
 ```json
-{
-    "id": "wtnkjdnfj-sdfk32432-gfdg454"
-}
+{ }
 ```
 
-- [api/Product/CreateProduct]
+- [POST] [api/Product/Product]
 ```json
 {
   "name": "string",
@@ -39,13 +37,20 @@ Ecommerce499 is a backend Restful API server.
 }
 ```
 
-- [api/Product/DeleteProduct]
+- [DELETE] [api/Product/Product?id=wtnkjdnfj-sdfk32432-gfdg454]
 ```json
-{
-    "id": "wtnkjdnfj-sdfk32432-gfdg454"
-}
+{ }
 ```
 
+- [POST] [api/Storage/Storage]
+```json
+{
+  "id": "string",
+  "name": "string",
+  "owner": "string",
+  "address": "string"
+}
+```
 
 ## Sample response body
 class
@@ -56,6 +61,14 @@ class
         public string? Description { get; set; }
         public Product? Product { get; set; }
         public List<Product>? Products { get; set; }
+    }
+    
+    public class StorageResponse
+    {
+        public string StatusCode { get; set; } = default!;
+        public string? Description { get; set; }
+        public Storage? Storage { get; set; }
+        public List<Storage>? Storages { get; set; }
     }
 ```
 
