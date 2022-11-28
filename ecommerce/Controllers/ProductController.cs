@@ -70,6 +70,7 @@ namespace ecommerce.Controllers
                 });
             }
             product.Storage = storage;
+            product.Id = Guid.NewGuid().ToString();
             var res = await _db.Products.AddAsync(product);
             await _db.SaveChangesAsync();
             return Ok(new ProductResponse

@@ -25,6 +25,7 @@ namespace ecommerce.Controllers
                     Description = "Invalid storage object",
                 });
             }
+            storage.Id = Guid.NewGuid().ToString();
             var res = await _db.Storages.AddAsync(storage);
             await _db.SaveChangesAsync();
             return Ok(new StorageResponse
