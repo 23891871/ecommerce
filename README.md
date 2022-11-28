@@ -11,7 +11,7 @@ Ecommerce499 is a backend Restful API server.
 
 ## Endpoints
 - [GET] [api/Product/Products] - Return all products in the database.
-- [GET] [api/Product/Product] - Find a product by id and return the product if it exists.
+- [GET] [api/Product/ProductById] - Find a product by id and return the product if it exists.
 - [POST] [api/Product/Product] - Create a product with a given object.
 - [DELETE] [api/Product/Product] - Delete a product by id.
 - [POST] [api/Storage/Storage] - Create a storage with a given object.
@@ -22,7 +22,7 @@ Ecommerce499 is a backend Restful API server.
 { }
 ```
 
-- [GET] [api/Product/Product?id=wtnkjdnfj-sdfk32432-gfdg454]
+- [GET] [api/Product/ProductById?id=wtnkjdnfj-sdfk32432-gfdg454]
 ```json
 { }
 ```
