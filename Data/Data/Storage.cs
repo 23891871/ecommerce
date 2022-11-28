@@ -10,6 +10,6 @@ namespace Data.Data
         public string Name { get; set; } = default!; 
         public string Owner { get; set; } = default!;
         public string Address { get; set; } = default!; // Unique Key
-        public List<Product> Products { get; set; }
+        public List<Product>? Products { get; set; }
     }
 }
